@@ -1,4 +1,3 @@
-#!/usr/bin/ruby
 require 'optparse'
 require 'fileutils'
 require 'net/http'
@@ -34,7 +33,7 @@ class SlippyTileUtils
 			ytiles.each do |yvalue|
 				path = File.exist?("#{@options[:out_dir]}/#{@options[:zoom]}/#{xvalue}/#{yvalue}.png.tile") ? "#{@options[:out_dir]}/#{@options[:zoom]}/#{xvalue}/#{yvalue}.png.tile" : @options[:empty]
 				image = Magick::Image.read(path)
-				images << image
+				images << image.first
 				image = nil
 			end
 			images_appended = images.append(true)
